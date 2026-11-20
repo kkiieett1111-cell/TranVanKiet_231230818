@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TranVanKiet_231230818.Models.Sach>
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<div class="banner">
+    <img src="~/images/banner.jpg" alt="Banner" />
+</div>
+
+<div id="ajax-book-container">
+    @await Html.PartialAsync("_SachListPartial", Model)
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', '.menu-filter', function (e) {
+                e.preventDefault();
+
+                // Đổi trạng thái active trên thanh điều hướng
+                $('.menu li').removeClass('active');
+                $(this).parent('li').addClass('active');
+
+                var maTL = $(this).data('matl');
+
+                // Gọi AJAX tải lại danh sách sách trong main content
+                $.ajax({
+                    url: '@Url.Action("LocSachTheoTheLoai", "Home")',
+                    type: 'GET',
+                    data: { maTL: maTL },
+                    success: function (response) {
+                        $('#ajax-book-container').html(response);
+                    },
+                    error: function () {
+                        alert('Có lỗi xảy ra khi tải dữ liệu sách!');
+                    }
+                });
+            });
+        });
+    </script>
+}

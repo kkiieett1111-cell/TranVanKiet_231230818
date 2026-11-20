@@ -1,0 +1,45 @@
+﻿@model TranVanKiet_231230818.Models.Sach
+@{
+    ViewData["Title"] = "Thêm sách mới";
+}
+
+<div class="section-head">
+    <h3>TRẦN VĂN KIỆT - THÊM SÁCH MỚI</h3>
+</div>
+
+<div style="background:#fff; padding:24px; border-radius:8px; max-width:420px; box-shadow:0 1px 4px rgba(0,0,0,.08);">
+    <form asp-controller="Sach" asp-action="Create" method="post">
+        @Html.AntiForgeryToken()
+
+        <div style="margin-bottom:14px;">
+            <label asp-for="MaTl" style="display:block; margin-bottom:4px; font-size:14px;">MaTL</label>
+            <select asp-for="MaTl" asp-items="ViewBag.MaTl"
+                    style="width:100%; padding:7px 10px; border:1px solid #999; border-radius:3px;">
+            </select>
+            <span asp-validation-for="MaTl" style="color:red; font-size:13px; display:block; margin-top:3px;"></span>
+        </div>
+
+        <div style="margin-bottom:14px;">
+            <label asp-for="TenSach" style="display:block; margin-bottom:4px; font-size:14px;">TenSach</label>
+            <input asp-for="TenSach"
+                   style="width:100%; padding:7px 10px; border:1px solid #999; border-radius:3px;" />
+            <span asp-validation-for="TenSach" style="color:red; font-size:13px; display:block; margin-top:3px;"></span>
+        </div>
+
+        <div style="margin-bottom:14px;">
+            <label asp-for="Gia" style="display:block; margin-bottom:4px; font-size:14px;">Gia</label>
+            <input asp-for="Gia" type="text"
+                   style="width:100%; padding:7px 10px; border:1px solid #999; border-radius:3px;" />
+            <span asp-validation-for="Gia" style="color:red; font-size:13px; display:block; margin-top:3px;"></span>
+        </div>
+
+        <div style="margin-bottom:16px;">
+            <label asp-for="Anh" style="display:block; margin-bottom:4px; font-size:14px;">Anh</label>
+            <input asp-for="Anh" placeholder="Ví dụ: Img_1.jpg"
+                   style="width:100%; padding:7px 10px; border:1px solid #999; border-radius:3px;" />
+            <span asp-validation-for="Anh" style="color:red; font-size:13px; display:block; margin-top:3px;"></span>
+        </div>
+
+        <button type="submit" class="btn-buy" style="padding:8px 16px;">Create</button>
+    </form>
+</div>

@@ -1,0 +1,11 @@
+﻿@model IEnumerable<TranVanKiet_231230818.Models.TheLoai>
+
+<li class="active">
+    <a href="javascript:void(0)" class="menu-filter" data-matl="0" data-tentl="TRẦN VĂN KIỆT">TRẦN VĂN KIỆT</a>
+</li>
+@foreach (var item in Model)
+{
+    <li>
+        <a href="javascript:void(0)" class="menu-filter" data-matl="@item.MaTl" data-tentl="@item.TenTl.ToUpper()">@item.TenTl.ToUpper()</a>
+    </li>
+}
